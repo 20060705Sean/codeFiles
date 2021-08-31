@@ -1,0 +1,5 @@
+name:smash flag:ODSM damage:F20+A90 MP:F10
+name:behead flag:ODSM damage:L16+F10+A120 MP:F20
+name:regan flag:SDSM HP:L-8+F-10 MP:L-8+F-5
+name:spur flag:ODSM damage:M8+F5+A100 MP:F15
+name:slash flag:ODSM damage:R10+F10+A50 MP:F10

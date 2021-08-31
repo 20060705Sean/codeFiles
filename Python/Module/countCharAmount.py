@@ -1,0 +1,1 @@
+count_each_char_sort_value = lambda string:sorted(list(set([(c, string.count(c)) if c not in string[:i] else " " for i, c in enumerate(string)])), key = lambda n:n[0])

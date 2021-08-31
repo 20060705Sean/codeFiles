@@ -1,0 +1,1 @@
+getAngle = lambda hour, minute:(minute*6-hour*30-minute*0.5+360)%180

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--Latest change by Sean 2021 07 12 2:39-->
+<html>
+    <head>
+        <!--
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        -->
+        <style>
+            #main {
+                width: 600px;
+                margin: 0 auto;
+            }
+            .container {
+                position: "relative";
+            }
+            .navButton {
+                background-color: #007fff;
+                color: white;
+                border: none;
+                font-size: 130%;
+                text-align: center;
+                font-family: 'Noto Sans TC';
+            }
+            body {
+                font-size: 130%;
+            }
+            nav {
+                position: absolute;
+                left: 5%;
+                width: 25%;
+            }
+            section {
+                margin-left: 25%;
+                margin-right: 10%;
+            }
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                height: 10%;
+                background-color: gray;
+                width: 100%;
+            }
+            body {
+                margin-bottom: 5%;
+            }
+            h1 h2 h3 h4 h5 h6 p i li{
+                font-family: 'Noto Sans TC';
+                color: '#333333';
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var cadre = [
+                {occur: "導師", name: "劉玉蓮"},
+                {occur: "班長", name: "許凱宣"},
+                {occur: "副班長", name: "鄭勝宇"},
+                {occur: "風紀股長", name: "陳柏宇"},
+                {occur: "學藝股長", name: "劉威廷"}
+            ];
+            var newsreport
+            function _removeNodes() {
+                document.querySelector('.unorderList').innerHTML = '';
+            }
+            function _readTextFile(file)
+            {
+                var rawFile = new XMLHttpRequest();
+                rawFile.open("GET", file, false);
+                rawFile.onreadystatechange = function () {
+                    if(rawFile.readyState === 4) {
+                        if(rawFile.status === 200 || rawFile.status == 0) {
+                            var allText = rawFile.responseText;
+                            newsreport = allText.split("\n");
+                        }
+                    }
+                }
+                rawFile.send(null);
+            }
+            _readTextFile("news.txt")
+            
+
+            function introduction() {
+                _removeNodes()
+                document.getElementById("line1").innerHTML="一群來自台東、高雄、楠梓、屏東的電神與學神們";
+                document.getElementById("line2").innerHTML="<img src='image.jpg'>";
+            }
+            function aboutUs() {
+                _removeNodes()
+                document.getElementById("line1").innerHTML="本班職位安排：";
+                document.getElementById("line2").innerHTML="";
+                var occurs = "";
+                for (var i = 0; i < cadre.length; i++) {
+                    occurs += "<li><h4 id='attachedNode'>" + cadre[i].occur + ":" + cadre[i].name + "</h4></li>";
+                }
+                document.querySelector('.unorderList').innerHTML = occurs;
+            }
+            function contactUs() {
+                
+            }
+            function findUs() {
+                
+            }
+            function news() {
+                document.getElementById("line1").innerHTML="本班最新消息：";
+                document.getElementById("line2").innerHTML="(現況即時更新)";
+                var newspaper = "";
+                for (var i = 0; i < newsreport.length; i++) {
+                    newspaper += "<li><h4 id='attachedNode'>" + newsreport[i] + "</h4></li>";
+                }
+                document.querySelector('.unorderList').innerHTML = newspaper;
+            }
+            function calendar() {
+                _removeNodes()
+                document.getElementById("line1").innerHTML="113行事曆";
+                document.getElementById("line2").innerHTML="<iframe src='https://google.com'></iframe>";
+            }
+            
+        </script>
+        <div align="center">
+            <h1>113級雄中科學班的小伙伴們</h1>
+        </div>
+        <hr>
+        <div class="container">
+            <nav>
+                <input class="navButton" type="button" value="113簡介" onclick="introduction()"><br><br>
+                <input class="navButton" type="button" value="最新消息" onclick="news()"><br><br>
+                <input class="navButton" type="button" value="關於我們" onclick="aboutUs()"><br><br>
+                <input class="navButton" type="button" value="聯繫我們" onclick="contactUs()"><br><br>
+                <input class="navButton" type="button" value="行事曆" onclick="calendar()"><br><br>
+                <input class="navButton" type="button" value="找我們" onclick="findUs()"><br><br>
+            </nav>
+            <section id="mainSection">
+                <h3 id="line1">一群來自台東、高雄、楠梓、屏東的電神與學神們</h3>
+                <h3 id="line2"><img src='image.jpg'></h3>
+                <ul class="unorderList"></ul>
+            </section>
+        </div>
+        <footer>
+            <div align="center">
+                <h3>這裡可以放一些廣告賺錢</h3>
+            </div>
+        </footer>
+    </body>
+</html>
